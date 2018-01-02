@@ -34,12 +34,12 @@ class ServicePlanUpdateRequest extends FormRequest
             'validity'          =>  ['required', 'integer', ],
             'validity_unit'     =>  ['required', Rule::in(Time::TIME_DURATION_UNITS), ],
             'price'             =>  ['required', 'integer', ],
-            'policy_id'         =>  ['required_with:primary_policy_enabled'],
-            'time_limit'        =>  ['required_with:time_limit_enabled', 'integer', ],
-            'time_unit'         =>  ['required_with:time_limit_enabled', Rule::in(Time::TIME_LIMIT_UNITS), ],
-            'data_limit'        =>  ['required_with:data_limit_enabled', 'integer', ],
-            'data_unit'         =>  ['required_with:data_limit_enabled', Rule::in(Data::DATA_LIMIT_UNITS), ],
-            'aq_policy_id'      =>  ['required_with:aq_policy_enabled'],
+//            'policy_id'         =>  ['required_with:primary_policy_enabled'],
+            'time_limit'        =>  ['sometimes','nullable','integer', 'required_with:time_limit_enabled',],
+            'time_unit'         =>  ['sometimes','nullable','required_with:time_limit_enabled', Rule::in(Time::TIME_LIMIT_UNITS), ],
+            'data_limit'        =>  ['sometimes','nullable','required_with:data_limit_enabled', 'integer', ],
+            'data_unit'         =>  ['sometimes','nullable','required_with:data_limit_enabled', Rule::in(Data::DATA_LIMIT_UNITS), ],
+            'aq_policy_id'      =>  ['sometimes','nullable','required_with:aq_policy_enabled'],
         ];
     }
 
