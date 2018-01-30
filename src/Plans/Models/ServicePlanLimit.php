@@ -47,14 +47,15 @@ class ServicePlanLimit extends AdminBaseModel
             $request->only('time_limit', 'time_unit', 'data_limit', 'data_unit')
         );
 
-        if( is_null($request->reset_every) || $request->reset_every <= 0 )
+        if( $request->has('reset_every_enabled'))
         {
+            $limit->reset_every = $request->reset_every;
+            $limit->reset_every_unit = $request->reset_every_unit;
+        } else {
             $limit->reset_every = $request->validity;
             $limit->reset_every_unit = $request->validity_unit;
-        } else {
-            $limit->reset_every = $request->reset_every;
-            $limit->reset_every_unit = $request->reset_unit;
         }
+
         return $limit;
     }
 }
