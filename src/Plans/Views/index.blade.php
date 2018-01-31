@@ -20,6 +20,9 @@
                     <th>
                         price
                     </th>
+                    <th>
+                        action
+                    </th>
                 </tr>
                 </thead>
                 <tbody>
@@ -37,6 +40,12 @@
                         </td>
                         <td>
                             {{$plan->price}}
+                        </td>
+                        <td>
+                            {!! Form::open(['route'=>'plans.delete', 'onsubmit'=>"return confirm('are you sure?')"]) !!}
+                            {!! Form::hidden('id', $plan->id) !!}
+                            <button type="submit" class="btn-xs btn btn-danger">remove</button>
+                            {!! Form::close() !!}
                         </td>
                     </tr>
                     @empty

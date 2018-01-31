@@ -54,8 +54,21 @@ class PlansController extends AdminBaseController
         }
     }
 
+    /**
+     * removes service plan from database.
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function postDelete()
     {
-
+        try{
+            $plan = ServicePlan::findOrFail(request('id'));
+            $plan->delete();
+            return back();
+        }
+        catch (\Exception $e)
+        {
+            dd($e->getMessage());
+        }
     }
 }
