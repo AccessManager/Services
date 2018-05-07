@@ -35,12 +35,12 @@
 
                         {!! Form::open(['route'=>'policies.delete']) !!}
                         {!! Form::hidden('id', $policy->id) !!}
-                        <div class="btn-group btn-group-sm">
+                        <div class="btn-group btn-group-xs">
                             <a href="{{route('policies.edit',[$policy->id])}}" class="btn btn-default">
-                                <i class="fa fa-pencil-square-o"></i> Modify
+                                <i class="fa fa-pencil-square-o"></i> modify
                             </a>
-                            <button type="submit" class="btn btn-sm  btn-danger" onclick="return confirm('Are You Sure?')">
-                                Delete
+                            <button type="submit" class="btn btn-xs  btn-danger" onclick="return confirm('Are You Sure?')">
+                            remove
                             </button>
                         </div>
 
